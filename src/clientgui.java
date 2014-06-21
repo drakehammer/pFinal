@@ -43,7 +43,7 @@ public static DefaultTableModel model = new DefaultTableModel();
 	serveryesno.serverconnectset(false);
 
 	//create the JFrame
-	JFrame frame = new JFrame("JKcool Client File Share");
+	JFrame frame = new JFrame("JTorrent");
 	ImageIcon icono = new ImageIcon("icono.png"); 
 	frame.setIconImage(icono.getImage()); 
 
