@@ -60,27 +60,27 @@ public static DefaultTableModel model = new DefaultTableModel();
 	
 	frame.setJMenuBar(menuBar);
 
-	JMenu mFile = new JMenu("File");
+	JMenu mFile = new JMenu("Archivo");
 
 	mFile.setMnemonic('f');
 
-	JMenuItem nw = new JMenuItem("New");
+	JMenuItem nw = new JMenuItem("Nuevo");
 	nw.setMnemonic('n');
 
-	JMenu administer = new JMenu("Administration");
+	JMenu administer = new JMenu("Administrador");
 
-	JMenuItem srv = new JMenuItem("Administer A Server");	
-	JMenuItem ipad = new JMenuItem("Get my IP address");
-	JMenuItem amiconnected = new JMenuItem("Am I connected");
+	JMenuItem srv = new JMenuItem("Administrar Servidor");	
+	JMenuItem ipad = new JMenuItem("Obtener mi direccion IP");
+	JMenuItem amiconnected = new JMenuItem("estoy conectado?");
 		ipad.setMnemonic('e');
-	JMenuItem rndsrv = new JMenuItem("Get a Random Server");
+	JMenuItem rndsrv = new JMenuItem("conectarme un servidor aleatorio");
 		rndsrv.setMnemonic('r');
 
 	rndsrv.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent ae) {
-			JOptionPane.showMessageDialog(null,"Some Server allow for you to see other servers Online\nthis will pole the list and get a random one","Poll Message",JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(null,"Salgún servidor permite que usted vea otros servidores en linea, se conecta aleatoreamente","Poll Message",JOptionPane.PLAIN_MESSAGE);
 			if (server.equals(null)) {
-			JOptionPane.showMessageDialog(null,"You Must be connected to a server First","Error",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null,"Es necesario estar conectado al primer servidor ","Error",JOptionPane.ERROR_MESSAGE);
 			} else {
 			try {
 
@@ -143,7 +143,7 @@ public static DefaultTableModel model = new DefaultTableModel();
 	
 						System.out.println(random);
 	
-						JOptionPane.showMessageDialog(null,"We Found a Server for you " + random ,"New Server",JOptionPane.PLAIN_MESSAGE);
+						JOptionPane.showMessageDialog(null,"encontramoes el servidor siguente para usted: " + random ,"New Server",JOptionPane.PLAIN_MESSAGE);
 	
 						break;
 					}
@@ -168,7 +168,7 @@ public static DefaultTableModel model = new DefaultTableModel();
 	amiconnected.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent ae) {
 			String printit = serveryesno.serverconnectget();
-			JOptionPane.showMessageDialog(null,printit,"Connected",JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(null,printit,"conectardo",JOptionPane.PLAIN_MESSAGE);
 
 		}
 	});			
@@ -176,9 +176,9 @@ public static DefaultTableModel model = new DefaultTableModel();
 	ipad.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 	
-			JFrame ipframe = new JFrame("Your IPaddress");
+			JFrame ipframe = new JFrame("Su Direccion IP");
 			JLabel iplabel = new JLabel();
-			iplabel.setText("Your ip address: " +ipags.getIp());
+			iplabel.setText("su direccion IP es: " +ipags.getIp());
 			ipframe.getContentPane().add (iplabel);
 			ipframe.setSize(200, 75);
 			ipframe.setLocation(300,250);
@@ -197,12 +197,12 @@ public static DefaultTableModel model = new DefaultTableModel();
 			}
 		});
 
-	JMenuItem connect = new JMenuItem("Connect to Server");
+	JMenuItem connect = new JMenuItem("Conectar a servidor");
 	    connect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			try {
 			String ipgotten = ipags.getIp();
-			server=JOptionPane.showInputDialog(null,"Server To Connect to","127.0.0.1");
+			server=JOptionPane.showInputDialog(null,"Conectar al servidor","127.0.0.1");
 			client = new Socket (server, 1001);
 			serveryesno.serverconnectset(true);
 			out = new ObjectOutputStream(client.getOutputStream());
@@ -240,7 +240,7 @@ public static DefaultTableModel model = new DefaultTableModel();
 					out.close();
 					} catch(Exception e){}
 				}
-				    JOptionPane.showMessageDialog(null,"Thank You for using JKCool File Services","Thanks",JOptionPane.PLAIN_MESSAGE);
+				    JOptionPane.showMessageDialog(null,"Gracias por usar Servicios de jTorrent","Thanks",JOptionPane.PLAIN_MESSAGE);
 				    System.exit(0);
 				}
 			}
@@ -259,7 +259,7 @@ public static DefaultTableModel model = new DefaultTableModel();
 	menuBar.add(mFile);
 	menuBar.add(administer);
 	JPanel layitout = new JPanel(new FlowLayout(FlowLayout.LEFT));
-	JLabel search= new JLabel("Search");
+	JLabel search= new JLabel("búsqueda");
 	final JTextField searchtext = new JTextField();
 	final JTable table = new JTable(model) {
 		public boolean isCellEditable(int rowIndex, int vColIndex) {
@@ -268,12 +268,12 @@ public static DefaultTableModel model = new DefaultTableModel();
 	};
 	searchtext.setPreferredSize (new Dimension(200,20));
 	
-	JButton searchrecords = new JButton("Search");
+	JButton searchrecords = new JButton("búsqueda");
 	frame.getRootPane().setDefaultButton(searchrecords);
 	searchrecords.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent ae) {
 			if (searchtext.getText().trim().equals("")) {
-			JOptionPane.showMessageDialog(null, "You need a Search request","SEARCH",JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Se necesita una solicitud de búsqueda","SEARCH",JOptionPane.PLAIN_MESSAGE);
 			} else {
 			try {
 			searchtext search = new searchtext();
@@ -294,10 +294,10 @@ public static DefaultTableModel model = new DefaultTableModel();
 	layitout.add(searchrecords);
 
 
-	model.addColumn("Filename"); 
-	model.addColumn("Tag");
-	model.addColumn("Ip Address");
-	model.addColumn("File Size");
+	model.addColumn("Nombre de archivo"); 
+	model.addColumn("Etiqueta");
+	model.addColumn("Direccion IP");
+	model.addColumn("Tamaño del archivo");
 	table.addMouseListener(new MouseAdapter() {
 	public void mouseReleased(MouseEvent me) {
 	if (me.getClickCount()!=2) return;
