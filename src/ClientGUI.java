@@ -107,20 +107,20 @@ public class ClientGUI extends JFrame{
 						String currentDirectory = System.getProperty("user.dir");
 						File dir = new File(currentDirectory + "\\share");
 						File[] list = dir.listFiles();
-
-						for(int ii = 0; ii < list.length; ii++)
-						{
-							String outfile = list[ii].getName().toString();
-							out.writeObject(".ip");
-							out.writeObject(ipgotten);
-							out.writeObject(".gofile");
-							out.writeObject(outfile);
-							out.writeObject(".filesize");
-							out.writeObject(String.valueOf(list[ii].length()));
-							out.writeObject(".type");
-							out.writeObject("Not implemented yet");
-							out.writeObject(".done");
-							out.writeObject("Spacer");
+						for(int ii = 0; ii < list.length; ii++){
+							if(Util.getFormat(list[ii]).equals("mp3")){
+								String outfile = list[ii].getName().toString();
+								out.writeObject(".ip");
+								out.writeObject(ipgotten);
+								out.writeObject(".gofile");
+								out.writeObject(outfile);
+								out.writeObject(".filesize");
+								out.writeObject(String.valueOf(list[ii].length()));
+								out.writeObject(".type");
+								out.writeObject("Not implemented yet");
+								out.writeObject(".done");
+								out.writeObject("Spacer");
+							}
 						}
 					} catch (Exception ae) {System.out.println(ae);}
 				}
