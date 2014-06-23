@@ -6,7 +6,7 @@ import java.net.*;
 public class Download {
 
 	public void getFile(Object ipAddy, Object fileGet, Object size) {
-		JFrame dframe = new JFrame("Download from " + String.valueOf(ipAddy));
+		JFrame dframe = new JFrame("descargando desde" + String.valueOf(ipAddy));
 		JLabel fileLabel = new JLabel(String.valueOf(fileGet));
 		JProgressBar progress = new JProgressBar();
 		JLabel donelabel = new JLabel();
@@ -17,7 +17,7 @@ public class Download {
 		dframe.setSize(300, 85);
 		dframe.setVisible(true);
 		dframe.setResizable(false);
-		donelabel.setText("Downloading");
+		donelabel.setText("Descargando");
 		Thread downloadingThread = new downloadingThread(ipAddy, fileGet, size, progress, donelabel);
 		downloadingThread.start();
 	}
@@ -61,7 +61,7 @@ class downloadingThread extends Thread {
 					int totalSizeWritten = 0;
 					int PACKET_SIZE=2048;
 					byte[] packet=new byte[PACKET_SIZE];
-					System.out.println("File to Save: " + fileGet);
+					System.out.println("Guardando archivo: " + fileGet);
 					String currentDirectory = System.getProperty("user.dir");
 					String uploaddirectory = currentDirectory + "\\share\\"+fileGet;
 					FileOutputStream fos = new FileOutputStream(uploaddirectory);
@@ -70,7 +70,7 @@ class downloadingThread extends Thread {
 						totalSizeWritten = totalSizeWritten + totalDataRead;
 						progress.setValue(totalSizeWritten);
 					}
-					done.setText("Download Complete");
+					done.setText("Descargar Completa");
 					flag = 0;
 				}
 			}

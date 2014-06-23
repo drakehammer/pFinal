@@ -50,7 +50,7 @@ class inqueryThread extends Thread {
 						break;
 					}
 					if (get.equals(".nofiles")) {
-						model.insertRow(0, new Object[]{"Search Yieled no results"});
+						model.insertRow(0, new Object[]{"Búsqueda no produjo resultados"});
 						flag = 0;
 						break;
 					}

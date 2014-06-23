@@ -50,7 +50,7 @@ public class ClientGUI extends JFrame{
 
 						} 
 
-						System.out.println("We'll Close this time but next time close using file > exit");
+						System.out.println("Cerraremos esta vez pero la próxima vez usa Archivo> Salir");
 
 					} catch(Exception ex) {}
 				} 
@@ -138,7 +138,7 @@ public class ClientGUI extends JFrame{
 							out.close();
 						} catch(Exception e){}
 					}
-					JOptionPane.showMessageDialog(null,"Gracias por usar Servicios de jTorrent","Thanks",JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null,"Gracias por usar Servicios de jTorrent","Gracias",JOptionPane.PLAIN_MESSAGE);
 					System.exit(0);
 				}
 			}
@@ -171,7 +171,7 @@ public class ClientGUI extends JFrame{
 			searchrecords.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ae) {
 					if (searchtext.getText().trim().equals("")) {
-						JOptionPane.showMessageDialog(null, "Se necesita una solicitud de búsqueda","SEARCH",JOptionPane.PLAIN_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Se necesita una solicitud de búsqueda","Buscar",JOptionPane.PLAIN_MESSAGE);
 					} else {
 						try {
 							SearchFile search = new SearchFile();

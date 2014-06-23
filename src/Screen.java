@@ -8,7 +8,7 @@ public class Screen {
 	}
 
 	public int numberOfFinds(int num) {
-		System.out.println("Number Of finds " + num);
+		System.out.println("Número de hallazgos " + num);
 		return num;
 	}	
 }

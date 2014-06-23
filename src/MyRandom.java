@@ -10,9 +10,9 @@ public class MyRandom extends Screen{
 		StringTokenizer st = new StringTokenizer(tosend.toString());
 		StringBuffer sbuf = new StringBuffer(tosend.toString());
 		if (st.countTokens() < 2) {
-			System.out.println("Error Getting Random");
+			System.out.println("Error al obtener aleatorio");
 		} else {
-			sbuf.append(" go to it if you choose");
+			sbuf.append(" ir a ella si lo desea");
 		}
 		super.numberOfFinds(size);
 		int minus = numberOfFinds(size);

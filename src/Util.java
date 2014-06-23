@@ -33,7 +33,7 @@ public class Util {
 				if(!id3.substring(93, 97).equals(""))
 					qualification+=0.5;
 			} else
-				System.out.println(f.getName() + " does not contain" + " ID3 information.");
+				System.out.println(f.getName() + " no contiene" + " informacion ID3.");
 			file.close();
 		} catch (Exception e) {
 			System.out.println("Error - " + e.toString());

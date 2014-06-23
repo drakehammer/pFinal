@@ -11,8 +11,8 @@ public class ServerAdmin extends JFrame {
 	public void startUp(String server)throws Exception{
 		String username = JOptionPane.showInputDialog(null,"Username","administrator");
 		JPasswordField pass = new JPasswordField();
-		Object[] message = new Object[] {"Enter Password", pass};	
-		Object[] options = new String[] {"OK", "Cancel"};
+		Object[] message = new Object[] {"Ingresar contraseña", pass};	
+		Object[] options = new String[] {"OK", "Cancelar"};
 		JOptionPane op = new JOptionPane(message, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION, null, options);
 		JDialog dialog = op.createDialog(null, "Login");
 		dialog.setVisible(true);

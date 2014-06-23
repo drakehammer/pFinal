@@ -68,12 +68,12 @@ class serverThread extends Thread {
 					}
 					if (get.equals(".done")) {
 						flag = 6;
-						System.out.println("Done Recieveing file");
+						System.out.println("Recibiendo archivo Hecho");
 						break;
 					}
 					if (get.equals(".poll")) {
 						flag = 7;
-						System.out.println("Polling for new Servers");
+						System.out.println("Sondeo para los nuevos servidores");
 						break;
 					}
 					if (get.equals(".deleteme")) {
@@ -104,7 +104,7 @@ class serverThread extends Thread {
 						count++; 
 					}
 					if (count == 0) {
-						System.out.println("No files");
+						System.out.println("No hay archivos");
 						out.writeObject(".nofiles");
 						out.flush();
 					}
@@ -112,17 +112,17 @@ class serverThread extends Thread {
 					flag =0;
 					break;
 				case 2:
-					System.out.println("Filename: " + get);
+					System.out.println("Nombre archivo: " + get);
 					filein = (String)get;
 					flag = 0;
 					break;	  
 				case 3:
-					System.out.println("Type: " + get);
+					System.out.println("Tipo: " + get);
 					typein = (String)get;
 					flag = 0;
 					break;
 				case 4:
-					System.out.println("file size: " + get);
+					System.out.println("Tamaño archivo: " + get);
 					filesize = (String)get;
 					flag = 0;
 					break;
