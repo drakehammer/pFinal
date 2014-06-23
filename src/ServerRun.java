@@ -4,8 +4,6 @@ import java.sql.*;
 
 public class ServerRun {
 	
-	private Socket client;
-	
 	public void runserver() throws IOException{
 
 		@SuppressWarnings("resource")

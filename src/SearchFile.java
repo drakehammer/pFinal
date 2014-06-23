@@ -1,4 +1,6 @@
 import java.io.*;
+import java.net.InetAddress;
+
 import javax.swing.table.*;
 
 public class SearchFile{
@@ -64,8 +66,10 @@ class inqueryThread extends Thread {
 					break;
 				case 3:
 					third = (String)get;
-					model.insertRow(0, new Object[]{first, second, third, forth});
-					flag = 0;
+					if(!InetAddress.getLocalHost().toString().split("/")[1].equals(third.split("/")[1])){
+						model.insertRow(0, new Object[]{first, second, third, forth});
+						flag = 0;
+					}
 					break;
 				case 4:
 					forth = (String)get;
