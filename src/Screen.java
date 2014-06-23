@@ -1,9 +1,9 @@
 
-public class clearscreen {
-	
+public class Screen {
+
 	public void clearscreen() {
 		for (int x = 0 ; x < 250 ; x++) {
-		System.out.println();
+			System.out.println();
 		}
 	}
 

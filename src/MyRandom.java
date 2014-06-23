@@ -1,7 +1,7 @@
 import java.util.*;
 
-public class getrandom extends clearscreen{
-	
+public class MyRandom extends Screen{
+
 	public Object getrandomone(Object[] ip, Object[] name) {
 		super.clearscreen();
 		int size = name.length;
@@ -10,9 +10,9 @@ public class getrandom extends clearscreen{
 		StringTokenizer st = new StringTokenizer(tosend.toString());
 		StringBuffer sbuf = new StringBuffer(tosend.toString());
 		if (st.countTokens() < 2) {
-		System.out.println("Error Getting Random");
+			System.out.println("Error Getting Random");
 		} else {
-		sbuf.append(" go to it if you choose");
+			sbuf.append(" go to it if you choose");
 		}
 		super.numberOfFinds(size);
 		int minus = numberOfFinds(size);
@@ -35,7 +35,7 @@ public class getrandom extends clearscreen{
 		}
 	}
 	public void hosttoscreen(Object hst) {
-	String host = (String)hst;
+		String host = (String)hst;
 		if (host.trim().equals("")) {
 			System.out.println("There must have been a problem Getting the random hostname you may have to exit");
 		} else {

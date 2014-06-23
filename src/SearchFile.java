@@ -1,37 +1,37 @@
 import java.io.*;
 import javax.swing.table.*;
 
-public class searchtext{
+public class SearchFile{
 
 	public void searchit(String searchtxt, ObjectInputStream in, ObjectOutputStream out, DefaultTableModel modl){
-	Thread inqueryThread = new inqueryThread(in, out, modl);
-	inqueryThread.start();
-	try {
-	out.writeObject(".query");
-	out.writeObject(searchtxt);
-	} catch (Exception e) {}
+		Thread inqueryThread = new inqueryThread(in, out, modl);
+		inqueryThread.start();
+		try {
+			out.writeObject(".query");
+			out.writeObject(searchtxt);
+		} catch (Exception e) {}
 	}
 }
 
 class inqueryThread extends Thread {
-ObjectInputStream inny;
-ObjectOutputStream out;
-int flag = 0;
-DefaultTableModel model;
-String first;
-String second;
-String third;
-String forth;
+	ObjectInputStream inny;
+	ObjectOutputStream out;
+	int flag = 0;
+	DefaultTableModel model;
+	String first;
+	String second;
+	String third;
+	String forth;
 	public inqueryThread(ObjectInputStream inn, ObjectOutputStream outt, DefaultTableModel mod) {
-	out = outt;
-	inny = inn;
-	model = mod;
+		out = outt;
+		inny = inn;
+		model = mod;
 	}
-public void run() {
-	while(true) {
-		try {
-		Object get = inny.readObject();
-			 switch (flag) {
+	public void run() {
+		while(true) {
+			try {
+				Object get = inny.readObject();
+				switch (flag) {
 				case 0:
 					if (get.equals(".filename")) {
 						flag = 1;
@@ -71,10 +71,10 @@ public void run() {
 					forth = (String)get;
 					flag = 0;
 					break;
-			}
-	} catch (Exception e) {System.out.println (e);}
+				}
+			} catch (Exception e) {System.out.println (e);}
+		}
 	}
 }
-}
 
-	
+

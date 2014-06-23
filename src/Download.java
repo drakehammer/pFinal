@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.io.*;
 import java.net.*;
 
-public class download {
+public class Download {
 
 	public void getFile(Object ipAddy, Object fileGet, Object size) {
 		JFrame dframe = new JFrame("Download from " + String.valueOf(ipAddy));
@@ -22,19 +22,19 @@ public class download {
 	}
 }
 
-	class downloadingThread extends Thread {
-		String ipAddy;
-		String fileGet;
-		String size;
-		JProgressBar progress;
-		int flag = 0;
-		JLabel done;
-		public downloadingThread(Object ipa, Object fget, Object fsize, JProgressBar bar, JLabel dne){
-			ipAddy = (String)ipa;
-			fileGet = (String)fget;
-			size = (String)fsize;
-			progress = bar;
-			done = dne;
+class downloadingThread extends Thread {
+	String ipAddy;
+	String fileGet;
+	String size;
+	JProgressBar progress;
+	int flag = 0;
+	JLabel done;
+	public downloadingThread(Object ipa, Object fget, Object fsize, JProgressBar bar, JLabel dne){
+		ipAddy = (String)ipa;
+		fileGet = (String)fget;
+		size = (String)fsize;
+		progress = bar;
+		done = dne;
 	}
 
 	public void run() {

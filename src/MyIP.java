@@ -1,7 +1,7 @@
 
-public class ipaddressgetset {
+public class MyIP {
 
-private static String iphold;
+	private static String iphold;
 
 	public void setIp(String ipaddress) {
 		iphold = ipaddress;
