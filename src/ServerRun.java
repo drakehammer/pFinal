@@ -3,7 +3,9 @@ import java.net.*;
 import java.sql.*;
 
 public class ServerRun {
-
+	
+	private Socket client;
+	
 	public void runserver() throws IOException{
 
 		@SuppressWarnings("resource")
@@ -12,7 +14,7 @@ public class ServerRun {
 			Socket client = server.accept();
 			ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
 			ObjectInputStream in = new ObjectInputStream(client.getInputStream());
-			Thread serverThread = new serverThread(out, in);
+			Thread serverThread = new serverThread(out, in, client);
 			serverThread.start();
 
 		}
@@ -20,6 +22,7 @@ public class ServerRun {
 }
 
 class serverThread extends Thread {
+	Socket client;
 	ObjectInputStream in;
 	ObjectOutputStream out;
 	String query;
@@ -29,9 +32,10 @@ class serverThread extends Thread {
 	String ip;
 	String filesize;
 	int result;
-	public serverThread(ObjectOutputStream ot, ObjectInputStream inn) {
+	public serverThread(ObjectOutputStream ot, ObjectInputStream inn, Socket client) {
 		out = ot;
 		in = inn;
+		this.client=client;
 	}
 
 	public void run() {
@@ -82,9 +86,9 @@ class serverThread extends Thread {
 					}
 				case 1:
 					if(get.equals("*"))
-						query = ("SELECT * from files");
+						query = ("SELECT * from files where ipaddress not like '"+client.getInetAddress().toString().replace("/", "")+"'");
 					else
-						query = ("SELECT * from files where filename LIKE '%" + get +"%'");
+						query = ("SELECT * from files where filename LIKE '%" + get +"%' and ipaddress not like '"+client.getInetAddress().toString().replace("/", "")+"'");
 					ResultSet rs = statement.executeQuery(query);
 					int count = 0;
 					while (rs.next()) {

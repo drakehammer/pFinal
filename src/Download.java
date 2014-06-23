@@ -6,7 +6,7 @@ import java.net.*;
 public class Download {
 
 	public void getFile(Object ipAddy, Object fileGet, Object size) {
-		JFrame dframe = new JFrame("descargando desde" + String.valueOf(ipAddy));
+		JFrame dframe = new JFrame("Descargando desde " + String.valueOf(ipAddy));
 		JLabel fileLabel = new JLabel(String.valueOf(fileGet));
 		JProgressBar progress = new JProgressBar();
 		JLabel donelabel = new JLabel();

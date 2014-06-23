@@ -99,7 +99,7 @@ public class ClientGUI extends JFrame{
 			connect.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
-						String ipgotten = ipags.getIp();
+//						String ipgotten = ipags.getIp();
 						server=JOptionPane.showInputDialog(null,"Conectar al servidor","127.0.0.1");
 						client = new Socket (server, 1001);
 						serveryesno.serverconnectset(true);
@@ -111,7 +111,7 @@ public class ClientGUI extends JFrame{
 							if(Util.getFormat(list[ii]).equals("mp3")){
 								String outfile = list[ii].getName().toString();
 								out.writeObject(".ip");
-								out.writeObject(ipgotten);
+								out.writeObject(InetAddress.getLocalHost().toString());
 								out.writeObject(".gofile");
 								out.writeObject(outfile);
 								out.writeObject(".filesize");
@@ -200,11 +200,11 @@ public class ClientGUI extends JFrame{
 				public void mouseReleased(MouseEvent me) {
 					if (me.getClickCount()!=2) return;
 					int row = table.rowAtPoint(me.getPoint());
-					Object ipaddresstoconnectto = table.getValueAt(row, 2); 
+					String ipaddresstoconnectto = (String)table.getValueAt(row, 2); 
 					Object filetoget = table.getValueAt(row, 0);
 					Object filesizetoget = table.getValueAt(row, 3);
 					Download file = new Download();
-					file.getFile(ipaddresstoconnectto, filetoget, filesizetoget);
+					file.getFile(ipaddresstoconnectto.split("/")[1], filetoget, filesizetoget);
 				}
 			});
 
