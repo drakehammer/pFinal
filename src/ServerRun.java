@@ -81,7 +81,10 @@ class serverThread extends Thread {
 						break;
 					}
 				case 1:
-					query = ("SELECT * from files where filename LIKE '%" + get +"%'");
+					if(get.equals("*"))
+						query = ("SELECT * from files");
+					else
+						query = ("SELECT * from files where filename LIKE '%" + get +"%'");
 					ResultSet rs = statement.executeQuery(query);
 					int count = 0;
 					while (rs.next()) {
