@@ -14,8 +14,9 @@ public class Download {
 		dframe.getContentPane().add(fileLabel);
 		dframe.getContentPane().add(donelabel);
 		dframe.getContentPane().add(progress);
-		dframe.setSize(300, 75);
+		dframe.setSize(300, 85);
 		dframe.setVisible(true);
+		dframe.setResizable(false);
 		donelabel.setText("Downloading");
 		Thread downloadingThread = new downloadingThread(ipAddy, fileGet, size, progress, donelabel);
 		downloadingThread.start();

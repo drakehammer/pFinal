@@ -117,7 +117,7 @@ public class ClientGUI extends JFrame{
 								out.writeObject(".filesize");
 								out.writeObject(String.valueOf(list[ii].length()));
 								out.writeObject(".type");
-								out.writeObject("Not implemented yet");
+								out.writeObject(String.valueOf(Util.getMetaDataQualification(list[ii])));
 								out.writeObject(".done");
 								out.writeObject("Spacer");
 							}
