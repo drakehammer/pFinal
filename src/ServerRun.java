@@ -20,16 +20,17 @@ public class ServerRun {
 }
 
 class serverThread extends Thread {
-	Socket client;
-	ObjectInputStream in;
-	ObjectOutputStream out;
-	String query;
-	int flag = 0;
-	String filein;
-	String typein;
-	String ip;
-	String filesize;
-	int result;
+	private Socket client;
+	private ObjectInputStream in;
+	private ObjectOutputStream out;
+	private String query;
+	private int flag = 0;
+	private String filein;
+	private String typein;
+	private String ip;
+	private String filesize;
+	private int result;
+	
 	public serverThread(ObjectOutputStream ot, ObjectInputStream inn, Socket client) {
 		out = ot;
 		in = inn;
@@ -137,6 +138,7 @@ class serverThread extends Thread {
 						query = ("Insert into files values ('"+ filein +"', '" + typein + "','" + ip + "','" + filesize + "')");
 						con.nativeSQL(query);
 						result = statement.executeUpdate(query);
+						System.out.println(result);
 						flag = 0;
 						break;
 					} catch (SQLException sqle) {System.out.println(sqle);}			

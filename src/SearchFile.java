@@ -16,16 +16,15 @@ public class SearchFile{
 }
 
 class inqueryThread extends Thread {
-	ObjectInputStream inny;
-	ObjectOutputStream out;
-	int flag = 0;
-	DefaultTableModel model;
-	String first;
-	String second;
-	String third;
-	String forth;
+	private ObjectInputStream inny;
+	private int flag = 0;
+	private DefaultTableModel model;
+	private String first;
+	private String second;
+	private String third;
+	private String forth;
+	
 	public inqueryThread(ObjectInputStream inn, ObjectOutputStream outt, DefaultTableModel mod) {
-		out = outt;
 		inny = inn;
 		model = mod;
 	}
@@ -52,7 +51,7 @@ class inqueryThread extends Thread {
 						break;
 					}
 					if (get.equals(".nofiles")) {
-						model.insertRow(0, new Object[]{"Búsqueda no produjo resultados"});
+						model.insertRow(0, new Object[]{"La búsqueda no produjo resultados"});
 						flag = 0;
 						break;
 					}

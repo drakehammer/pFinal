@@ -24,12 +24,13 @@ public class Download {
 }
 
 class downloadingThread extends Thread {
-	String ipAddy;
-	String fileGet;
-	String size;
-	JProgressBar progress;
-	int flag = 0;
-	JLabel done;
+	private String ipAddy;
+	private String fileGet;
+	private String size;
+	private JProgressBar progress;
+	private int flag = 0;
+	private JLabel done;
+	
 	public downloadingThread(Object ipa, Object fget, Object fsize, JProgressBar bar, JLabel dne){
 		ipAddy = (String)ipa;
 		fileGet = (String)fget;

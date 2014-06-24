@@ -7,8 +7,7 @@ public class ClientServer {
 		try {
 			@SuppressWarnings("resource")
 			ServerSocket server = new ServerSocket(1000);
-			while(true) {		
-
+			while(true) {
 				Socket server1 = server.accept();
 				ObjectOutputStream out = new ObjectOutputStream(server1.getOutputStream());
 				ObjectInputStream in = new ObjectInputStream(server1.getInputStream());
@@ -19,14 +18,14 @@ public class ClientServer {
 	}
 
 }
+
 class downloadThread extends Thread {
-	ObjectInputStream in;
-	ObjectOutputStream out;
-	Socket server;
-	int flag = 0;
+	private ObjectInputStream in;
+	private ObjectOutputStream out;
+	private int flag = 0;
+	
 	public downloadThread(Socket sock, ObjectInputStream inn, ObjectOutputStream ot){
 		in = inn;
-		server = sock;
 		out = ot;
 	}
 	public void run() {

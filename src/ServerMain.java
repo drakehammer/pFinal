@@ -2,13 +2,12 @@ import java.io.*;
 
 public class ServerMain {
 
-	public static void main(String[] args) { 
-
-		ServerInit deletefiles = new ServerInit();
-		deletefiles.deletenow();
-		ServerRun serveit = new ServerRun();
+	public static void main(String[] args) {
+		ServerInit si = new ServerInit();
+		si.deletenow();
+		ServerRun server = new ServerRun();
 		try {
-			serveit.runserver();
+			server.runserver();
 		} catch (IOException e){}
 	}
 }

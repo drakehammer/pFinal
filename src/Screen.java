@@ -1,7 +1,7 @@
 
 public class Screen {
 
-	public void clearscreen() {
+	public void clearScreen() {
 		for (int x = 0 ; x < 250 ; x++) {
 			System.out.println();
 		}

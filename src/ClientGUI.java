@@ -8,83 +8,53 @@ import javax.swing.table.*;
 public class ClientGUI extends JFrame{
 
 	private static final long serialVersionUID = 1L;
-
-	public static String server = null;
-
-	public static ObjectOutputStream out = null;
-	public static ObjectInputStream in = null;
-
-	public static Socket client = null;
-
-	public static DefaultTableModel model = new DefaultTableModel();
+	private String server = null;
+	private ObjectOutputStream out = null;
+	private ObjectInputStream in = null;
+	private Socket client = null;
+	private DefaultTableModel model = new DefaultTableModel();
+	private ConnectState serveryesno = new ConnectState();
+	private MyIP ipags = new MyIP();
 
 	public void build() {
-
 		try {
-
-			final ConnectState serveryesno = new ConnectState();
-
 			serveryesno.serverconnectset(false);
-
 			JFrame frame = new JFrame("JTorrent");
 			ImageIcon icono = new ImageIcon("icono.png"); 
-			frame.setIconImage(icono.getImage()); 
-
+			frame.setIconImage(icono.getImage());
 			InetAddress addr = InetAddress.getLocalHost(); 
 			String ipAddr = addr.getHostAddress();
-
-			final MyIP ipags = new MyIP();
-			ipags.setIp(ipAddr); 
-
+			ipags.setIp(ipAddr);
 			Runtime.getRuntime().addShutdownHook(new Thread() {
 				public void run() { 
 					try {
-
 						if (server != null) {
-
 							out.writeObject(".deleteme");
-
 							out.writeObject(ipags.getIp());
-
 							out.close();
-
-						} 
-
+						}
 						System.out.println("Cerraremos esta vez pero la próxima vez usa Archivo> Salir");
-
 					} catch(Exception ex) {}
 				} 
 			});
-
-
 			JMenuBar menuBar = new JMenuBar();
-
 			frame.setJMenuBar(menuBar);
-
 			JMenu mFile = new JMenu("Archivo");
-
 			mFile.setMnemonic('f');
-
 			JMenuItem nw = new JMenuItem("Nuevo");
 			nw.setMnemonic('n');
-
 			JMenu administer = new JMenu("Administración");
-
 			JMenuItem ipad = new JMenuItem("Obtener mi direccion IP");
 			JMenuItem amiconnected = new JMenuItem("Estoy conectado?");
 			ipad.setMnemonic('e');
-
 			amiconnected.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ae) {
 					String printit = serveryesno.serverconnectget();
 					JOptionPane.showMessageDialog(null,printit,"Conectado",JOptionPane.PLAIN_MESSAGE);
-
 				}
-			});			
-
+			});
 			ipad.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-
 					JFrame ipframe = new JFrame("Su Direccion IP");
 					JLabel iplabel = new JLabel();
 					iplabel.setText("Su direccion IP es: " +ipags.getIp());
@@ -94,12 +64,10 @@ public class ClientGUI extends JFrame{
 					ipframe.setVisible(true);
 				}
 			});
-
 			JMenuItem connect = new JMenuItem("Conectar a servidor");
 			connect.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
-//						String ipgotten = ipags.getIp();
 						server=JOptionPane.showInputDialog(null,"Conectar al servidor","127.0.0.1");
 						client = new Socket (server, 1001);
 						serveryesno.serverconnectset(true);
@@ -124,8 +92,7 @@ public class ClientGUI extends JFrame{
 						}
 					} catch (Exception ae) {System.out.println(ae);}
 				}
-			}
-					);
+			});
 			JMenuItem exit = new JMenuItem("Salir");
 			exit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ae) {
@@ -141,10 +108,7 @@ public class ClientGUI extends JFrame{
 					JOptionPane.showMessageDialog(null,"Gracias por usar Servicios de jTorrent","Gracias",JOptionPane.PLAIN_MESSAGE);
 					System.exit(0);
 				}
-			}
-					);
-
-
+			});
 			connect.setMnemonic('c');
 			exit.setMnemonic('x');
 			mFile.add(nw);
@@ -158,14 +122,12 @@ public class ClientGUI extends JFrame{
 			JLabel search= new JLabel("Buscar");
 			final JTextField searchtext = new JTextField();
 			final JTable table = new JTable(model) {
-				private static final long serialVersionUID = 1L;
-
+			private static final long serialVersionUID = 1L;
 				public boolean isCellEditable(int rowIndex, int vColIndex) {
 					return false; 
 				} 
 			};
 			searchtext.setPreferredSize (new Dimension(200,20));
-
 			JButton searchrecords = new JButton("Buscar");
 			frame.getRootPane().setDefaultButton(searchrecords);
 			searchrecords.addActionListener(new ActionListener() {
@@ -190,8 +152,6 @@ public class ClientGUI extends JFrame{
 			layitout.add(search);
 			layitout.add(searchtext);
 			layitout.add(searchrecords);
-
-
 			model.addColumn("Nombre de archivo"); 
 			model.addColumn("Calificación");
 			model.addColumn("Direccion IP");
@@ -207,7 +167,6 @@ public class ClientGUI extends JFrame{
 					file.getFile(ipaddresstoconnectto.split("/")[1], filetoget, filesizetoget);
 				}
 			});
-
 			frame.getContentPane().add(layitout, BorderLayout.NORTH);
 			frame.getContentPane().add(new JScrollPane(table));
 			frame.setSize(600,400);
